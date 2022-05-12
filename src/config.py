@@ -4,10 +4,10 @@
 # File Paths #
 ##############
 
-instructionsName = "inputParams.txt"
-
-inputDir  = "../" + instructionsName + ""
-outputDir = "../output/"
+# defined by USER
+instructionsName = "Instructions - calcLipid.txt"
+inputDir  = "../../UoM-Data-Repository/input/" + instructionsName + ""
+outputDir = "../../UoM-Data-Repository/output/calcLipid/"
 
 
 ##############

@@ -1,9 +1,0 @@
-title=101 - h-MC3 h-Chol (75-25) 1200 ul
-lipidType,lipidAmount,stockConc,weightTot=0.12,finConc=0.1,ratioType=ratio
-DLin-MC3-DMA,75,1.0
-Cholesterol,25,1.0
-
-Calculated Quantities:
-99.94 uL of DLin-MC3-DMA
-20.06 uL of Cholesterol
-1080.00 uL of chloroform
