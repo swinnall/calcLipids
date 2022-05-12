@@ -1,0 +1,9 @@
+,,,,,title=101 - h-MC3 h-chol 1500 ul - TEST
+lipidType,lipidAmount,stockConc,weightTot=0.15,finConc=0.1,ratioType=ratio
+DLin-MC3-DMA,75,1.0,,,
+Cholesterol,25,1.0,,,
+
+Calculated Quantities:
+124.92 uL of DLin-MC3-DMA
+25.08 uL of Cholesterol
+1350.00 uL of chloroform
