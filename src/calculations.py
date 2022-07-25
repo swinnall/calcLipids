@@ -78,13 +78,28 @@ def calc(nLipids, lipidType, lipidFrac, stockConc, wTotal, finConc):
 
 def output(nLipids, lipidType, stockConc, wTotal, finConc, volAdd, V_CHCl3, outputFilePath):
 
+    usingAcidicLipid = False
+    acidLipidList    = ['POPS']
+    for i in range(nLipids):
+        if lipidType.get(i) in acidLipidList:
+            usingAcidicLipid = True
+
     ## Write to file
     with open(outputFilePath, 'a', newline = '') as f:
 
         f.write('\nCalculated Quantities:\n')
         for i in range(nLipids):
-            f.write("%.2f uL of %s\n" %(volAdd[i], lipidType[i]))
-        f.write("%.2f uL of chloroform" %V_CHCl3)
+
+            if lipidType.get(i) in acidLipidList:
+                f.write("%.2f uL of %s*\n" %(volAdd[i], lipidType[i]))
+            else:
+                f.write("%.2f uL of %s\n" %(volAdd[i], lipidType[i]))
+
+        f.write("%.2f uL of chloroform\n" %V_CHCl3)
+
+        if usingAcidicLipid == True:
+            f.write("\n* Preparation Warning: Using acidic lipids!\nUse 98% chloroform and 2% methanol when preparing lipid stock.")
+
 
 
     ## Print to terminal
@@ -102,9 +117,17 @@ def output(nLipids, lipidType, stockConc, wTotal, finConc, volAdd, V_CHCl3, outp
     print("\n\nRequired Amounts:\n~~~~~~~~~~~~~~~~~~~~")
 
     for i in range(nLipids):
-        print( "%.2f uL of %s" %(volAdd[i], lipidType[i]))
 
-    print("%.2f uL of chloroform\n\n" %V_CHCl3)
+        if lipidType.get(i) in acidLipidList:
+            print("%.2f uL of %s*" %(volAdd[i], lipidType[i]))
+        else:
+            print("%.2f uL of %s" %(volAdd[i], lipidType[i]))
+
+    print("%.2f uL of chloroform" %V_CHCl3)
+
+    if usingAcidicLipid == True:
+        print("\n* Preparation Warning: Using acidic lipids!\nUse 98% chloroform and 2% methanol when preparing lipid stock.")
+
 
     return
 
@@ -133,7 +156,7 @@ def main(instructionsFile, outputFilePath):
     output(nLipids, lipidType, stockConc, wTotal, finConc, volAdd, V_CHCl3, outputFilePath)
 
     # analysis complete
-    print("Analysis complete.")
+    print("\n\nAnalysis complete.")
     sys.exit()
 
     return
